@@ -7,8 +7,10 @@
     <groupId>com.dongl</groupId>
     <artifactId>blog_pro</artifactId>
     <version>1.0-SNAPSHOT</version>
+
     <modules>
         <module>blog_common</module>
+        <module>blog_base</module>
     </modules>
 
     <!-- 初次常见父模块 添加如下start -->

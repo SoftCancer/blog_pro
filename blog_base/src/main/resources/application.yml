@@ -1,0 +1,12 @@
+server:
+  port: 9001
+
+spring:
+  application:
+  ##  中间只能是横杠，不能使用下划线
+    name: blog-base
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.94.10.48:3306/tensquare_base
+    username: root
+    password: 123456
