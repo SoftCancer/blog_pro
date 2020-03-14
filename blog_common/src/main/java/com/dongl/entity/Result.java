@@ -3,7 +3,7 @@ package com.dongl.entity;
 import lombok.Data;
 
 /**
- * @Description:  数据统一返回格式化
+ * @Description: 数据统一返回格式化
  * @author: YaoGuangXun
  * @date: 2020/3/13 21:24
  * @Version: 1.0
@@ -35,6 +35,43 @@ public class Result {
         this.message = message;
         this.data = data;
     }
+
+
+    public static Result success() {
+        return new Result(true, ResultEnum.SUCCESS.getCode(), ResultEnum.SUCCESS.getMsg());
+    }
+
+
+    public static Result success(String msg) {
+        return new Result(true, ResultEnum.SUCCESS.getCode(), msg);
+    }
+
+    public static Result success(Object data) {
+        return new Result(true, ResultEnum.SUCCESS.getCode(),ResultEnum.SUCCESS.getMsg(), data);
+    }
+
+    public static Result success(String msg, Object data) {
+        return new Result(true, ResultEnum.ERROR.getCode(), msg, data);
+    }
+
+
+    public static Result error() {
+        return new Result(true, ResultEnum.ERROR.getCode(), ResultEnum.ERROR.getMsg());
+    }
+
+
+    public static Result error(String msg) {
+        return new Result(true, ResultEnum.ERROR.getCode(), msg);
+    }
+
+    public static Result error(Object data) {
+        return new Result(true, ResultEnum.ERROR.getCode(),ResultEnum.ERROR.getMsg(), data);
+    }
+
+    public static Result error(String msg, Object data) {
+        return new Result(true, ResultEnum.ERROR.getCode(), msg, data);
+    }
+
 
 
 }
