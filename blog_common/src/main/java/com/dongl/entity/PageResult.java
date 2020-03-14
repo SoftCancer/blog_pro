@@ -13,6 +13,7 @@ import java.util.List;
 @Data
 public class PageResult<T> {
 
+    /** 总页数 **/
     private long total;
 
     private List<T> rows;

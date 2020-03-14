@@ -3,6 +3,7 @@ package com.dongl.entity;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -23,7 +24,8 @@ public class Label implements Serializable {
     @Id
     private String id;
     /** 标签名称 **/
-    private String labelname;
+    @Column(name = "labelname")
+    private String labelName;
     /** 状态 **/
     private String state;
     /** 使用次数 **/

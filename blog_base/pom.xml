@@ -24,7 +24,6 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
-
         <dependency>
             <groupId>com.dongl</groupId>
             <artifactId>blog_common</artifactId>
