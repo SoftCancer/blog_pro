@@ -72,6 +72,12 @@ public class Result {
         return new Result(true, ResultEnum.ERROR.getCode(), msg, data);
     }
 
+    public static Result exception(String msg) {
+        return new Result(false, ResultEnum.EXCEPTION.getCode(), msg);
+    }
+
+
+
 
 
 }
