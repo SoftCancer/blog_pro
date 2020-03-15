@@ -14,6 +14,7 @@
         <module>blog_recruit</module>
         <module>blog_qa</module>
         <module>blog_ article</module>
+        <module>blog_gathering</module>
     </modules>
 
     <!-- 初次常见父模块 添加如下start -->
