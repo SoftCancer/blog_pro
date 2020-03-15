@@ -11,6 +11,7 @@
     <modules>
         <module>blog_common</module>
         <module>blog_base</module>
+        <module>blog_recruit</module>
     </modules>
 
     <!-- 初次常见父模块 添加如下start -->
