@@ -53,7 +53,11 @@ public class Result {
     }
 
     public static Result success(String msg, Object data) {
-        return new Result(true, ResultEnum.ERROR.getCode(), msg, data);
+        return new Result(true, ResultEnum.SUCCESS.getCode(), msg, data);
+    }
+
+    public static Result thumbsupsInfo() {
+        return new Result(false, ResultEnum.THUMBSUP.getCode(), ResultEnum.THUMBSUP.getMsg());
     }
 
     /**

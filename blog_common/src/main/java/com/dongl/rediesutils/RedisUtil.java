@@ -110,6 +110,7 @@ public class RedisUtil {
 
     /**
      * @Description: 判断缓存中是否有对应的 key
+     *  key 存在 返回：true ，否则：false。
      * @Author: YaoGuangXun
      * @Date: 2020/3/15 18:47
      **/
