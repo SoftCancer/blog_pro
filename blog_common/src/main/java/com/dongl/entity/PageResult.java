@@ -1,6 +1,7 @@
 package com.dongl.entity;
 
 import lombok.Data;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -24,5 +25,10 @@ public class PageResult<T> {
     public PageResult(long total, List<T> rows) {
         this.total = total;
         this.rows = rows;
+    }
+
+    public PageResult(Page<T> o) {
+        this.total = o.getTotalElements();
+        this.rows = o.getContent();
     }
 }

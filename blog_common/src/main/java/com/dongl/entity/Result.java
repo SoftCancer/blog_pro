@@ -1,6 +1,8 @@
 package com.dongl.entity;
 
 import lombok.Data;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 /**
  * @Description: 数据统一返回格式化
@@ -52,6 +54,17 @@ public class Result {
 
     public static Result success(String msg, Object data) {
         return new Result(true, ResultEnum.ERROR.getCode(), msg, data);
+    }
+
+    /**
+     * @Description: 分页返回数据封装
+     * @Author: YaoGuangXun
+     * @Date: 2020/3/16 20:58
+     **/
+    public static Result successPage(Page pageData) {
+        // 分页数据封装
+        PageResult pageResult = new PageResult<>(pageData);
+        return new Result(true, ResultEnum.ERROR.getCode(), ResultEnum.SUCCESS.getMsg(), pageResult);
     }
 
 
