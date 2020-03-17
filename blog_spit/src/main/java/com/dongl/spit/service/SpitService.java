@@ -74,8 +74,8 @@ public class SpitService {
             Query query = new Query();
             query.addCriteria(Criteria.where("_id").is(parentId));
             Update update = new Update();
-            update.inc("comment",1);
-            mongoTemplate.updateFirst(query,update,"spit");
+            update.inc("comment", 1);
+            mongoTemplate.updateFirst(query, update, "spit");
         }
 
         spitDao.save(spit);
@@ -90,7 +90,7 @@ public class SpitService {
     }
 
     public Page<Spit> findByParentId(String id, int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
+        Pageable pageable = PageRequest.of(page - 1, size);
         Page<Spit> spitPage = spitDao.findByParentid(id, pageable);
         return spitPage;
     }
