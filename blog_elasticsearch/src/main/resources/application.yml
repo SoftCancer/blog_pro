@@ -1,0 +1,13 @@
+server:
+  port: 9007
+spring:
+  application:
+    name: blog_elasticsearch
+  data:
+    elasticsearch:
+    ####集群名称 和配置文件中的 cluster_name 保持一致
+     cluster-name: elasticsearch-cluster
+    ####  9300端口： ES节点之间通讯使用
+     cluster-nodes: 192.168.1.107:9300
+
+
