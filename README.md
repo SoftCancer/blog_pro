@@ -1,5 +1,5 @@
 # blog_pro
-SpringCloud 学习项目
+SpringCloud 学习实现 博客项目
 
 ## blog_pro 项目组成：
 
