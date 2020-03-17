@@ -1,6 +1,39 @@
 # blog_pro
 SpringCloud 学习项目
 
-## 组成：
+## blog_pro 项目组成：
 
-blog_common ：公共部分
+####  1. blog_common ：公共部分
+
+```$xslt
+主要实现工具类的封装，统一返回数据的封装，全局异常的处理
+```
+####  2. blog_base ：标签部分
+```$xslt
+主要 通过Jpa实现 标签的增删查改及分页功能
+```
+####  3. blog_recruit ：职位推荐部分
+```$xslt
+主要通过JPA的属性名查询数据
+```
+####  4. blog_qa ：问答模块部分
+```$xslt
+主要通过主键SQL语句的方式实现数据的查询
+```
+####  5. blog_article ：公共部分
+```$xslt
+整合并操作 Redis，通过注解SQL语句的方式操作数据
+```
+####  6. blog_gathering ：活动部分
+```$xslt
+整合SpringCache 缓存，
+```
+####  7. blog_spit ：吐槽评论部分
+```$xslt
+整合MongoDB数据库，并实现增删查改分页操作及Redis缓存
+```
+####  8. blog_elasticsearch ：elasticsearch 操作
+```$xslt
+整合 elasticsearch 并实现数据 保存及查询分页功能。
+```
+
