@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 活动控制器层
+ * 活动 控制器层
  * @author Administrator
  *
  */

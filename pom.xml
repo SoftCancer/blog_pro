@@ -13,7 +13,7 @@
         <module>blog_base</module>
         <module>blog_recruit</module>
         <module>blog_qa</module>
-        <module>blog_ article</module>
+        <module>blog_article</module>
         <module>blog_gathering</module>
         <module>blog_spit</module>
         <module>blog_elasticsearch</module>
