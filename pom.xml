@@ -17,6 +17,8 @@
         <module>blog_gathering</module>
         <module>blog_spit</module>
         <module>blog_elasticsearch</module>
+        <module>blog_rabbitmq</module>
+        <module>blog_user</module>
     </modules>
 
     <!-- 初次常见父模块 添加如下start -->

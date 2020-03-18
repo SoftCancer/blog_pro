@@ -1,0 +1,9 @@
+server:
+  port: 9007
+
+spring:
+  rabbitmq:
+    host: 192.168.1.107
+    port: 5627
+    username: root
+    password: 123456
