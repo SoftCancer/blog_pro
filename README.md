@@ -37,3 +37,8 @@ SpringCloud 学习实现 博客项目
 整合 elasticsearch 并实现数据 保存及查询分页功能。
 ```
 
+#### 9. blog_user ：用户、管理员模块
+```$xslt
+用户的注册，增删查改功能，使用Redis和RabbitMQ实现验证码发送。
+```
+
