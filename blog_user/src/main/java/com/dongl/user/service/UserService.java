@@ -192,7 +192,7 @@ public class UserService {
         // 该验证应该查询用户表进行验证
         boolean exists = redisUtil.exists(key);
         if (exists){
-            return Result.error("手机号码已被注册！");
+            return Result.error("验证码已发送，如未收到10分钟后重试！");
         }
         // 1.获取随机验证码
         String chechCode = RandomStringUtils.randomNumeric(6);
@@ -211,6 +211,7 @@ public class UserService {
 
     public Result regist(User user, String code) {
         String mobile = user.getMobile();
+        String userId = user.getId();
         if (StringUtils.isEmpty(mobile)){
             return Result.error("手机号码不能为空！");
         }
@@ -220,17 +221,23 @@ public class UserService {
         if (!exists){
             return Result.error("手机号码不正确！");
         }
-        // 2. 判断验证码是否存在或失效
+        // 2. 判断手机号是否已被注册
+        User userIsExists = userDao.findById(userId).get();
+        if (null != userIsExists){
+            return Result.error("该手机号已经被注册！");
+        }
+        // 3. 判断验证码是否存在或失效
         Object value = redisUtil.get(key);
         if (null == value){
             return Result.error("验证码失效！");
         }
+
         String keep_code = String.valueOf(value);
-        // 3. 判断验证码是否相等
+        // 4. 判断验证码是否相等
         if (!keep_code.equals(code)){
             return Result.error("验证码不正确!");
         }
-        // 4. 调用数据库保存 用户信息。
+        // 5. 调用数据库保存 用户信息。
         /**  注册日期 **/
         user.setRegdate(new Date());
         this.add(user);
