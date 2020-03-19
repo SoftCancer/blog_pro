@@ -37,7 +37,7 @@ public class SmsUtil {
      * @param mobile 手机号
      * @param template_code 模板号
      * @param sign_name 签名
-     * @param param 参数
+     * @param param 参数格式：{"name":"Tom","code":"123"}
      * @return
      * @throws ClientException
      */
