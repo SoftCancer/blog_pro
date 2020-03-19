@@ -1,4 +1,4 @@
-package com.dongl.user.utils;
+package com.dongl.user.config;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
