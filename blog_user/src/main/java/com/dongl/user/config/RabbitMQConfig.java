@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @Description: RabbitMQ 的交换机和队列
+ * @Description: RabbitMQ 的交换机和队列配置
  * @author: YaoGuangXun
  * @date: 2020/3/18 21:08
  * @Version: 1.0
