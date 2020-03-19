@@ -22,3 +22,10 @@ spring:
     port: 5672
     username: root
     password: 123456
+
+aliyun:
+  sms:
+    accessKeyId: LTAI4Fuxe6jRibrnPBKCQ8VU
+    accessKeySecret: VmyRFbNXt5btNcsr2KsY2SPAAcrftz
+    template_code: SMS_186515157
+    sign_name: Albert博客

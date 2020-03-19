@@ -1,4 +1,4 @@
-package com.dongl.utils;
+package com.dongl.user.sms;
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
 import com.aliyuncs.dysmsapi.model.v20170525.QuerySendDetailsRequest;
@@ -71,6 +71,11 @@ public class SmsUtil {
         return sendSmsResponse;
     }
 
+    /**
+     * @Description: 查询短信发送详情
+     * @Author: YaoGuangXun
+     * @Date: 2020/3/19 16:23
+     **/
     public  QuerySendDetailsResponse querySendDetails(String mobile,String bizId) throws ClientException {
         String accessKeyId =env.getProperty("accessKeyId");
         String accessKeySecret = env.getProperty("accessKeySecret");

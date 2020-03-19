@@ -189,6 +189,7 @@ public class UserService {
     public Result sendShortMessage(String mobile) {
         String key = "checkCode" + mobile;
 
+        // 该验证应该查询用户表进行验证
         boolean exists = redisUtil.exists(key);
         if (exists){
             return Result.error("手机号码已被注册！");
@@ -198,13 +199,12 @@ public class UserService {
         // 2. 向Redis 中存放验证码
         redisUtil.set(key, chechCode, 600);
 
-        // 3. 向 RabbitMQ中发送 验证码
+        // 3. 向 RabbitMQ中发送 验证码 ，在 SmsListener.java 中调用 阿里云 短信发送功能消费 RabbitMQ 中的消息。
         Map<String, String> map = new HashMap<>();
         map.put("mobile",mobile);
         map.put("checkCode",chechCode);
         sendMsgService.sendMessage(map);
 
-        // 4.调用短信平台 或  短信发送平台消费 RabbitMQ 中的消息。
         System.out.println("验证码："+ chechCode);
         return  Result.success("验证码发送成功！");
     }

@@ -1,7 +1,7 @@
 package com.dongl.user.sms;
 
 import com.aliyuncs.exceptions.ClientException;
-import com.dongl.utils.SmsUtil;
+import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,7 +30,7 @@ public class SmsListener {
     @Value("${aliyun.sms.sign_name}")
     private String sign_name;
 
-
+    @RabbitHandler
     public void executeSms(Map<String ,String> map){
         String mobile = map.get("mobile");
         String checkCode = map.get("checkCode");
@@ -41,6 +41,7 @@ public class SmsListener {
              * @Description: 短信发送功能
              * @Author: YaoGuangXun
              * @Date: 2020/3/19 15:29
+             * TemplateParam： {"name":"Tom","code":"123"}
              **/
             smsUtil.sendSms(mobile,template_code,sign_name,"{\"code\":\""+checkCode+"\"}");
         } catch (ClientException e) {
