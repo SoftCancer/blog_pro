@@ -1,0 +1,10 @@
+server:
+  port: 9007
+
+
+aliyun:
+  sms:
+    accessKeyId: LTAI4Fuxe6jRibrnPBKCQ8VU
+    accessKeySecret: VmyRFbNXt5btNcsr2KsY2SPAAcrftz
+    template_code: SMS_186515157
+    sign_name:	凯撒科技
