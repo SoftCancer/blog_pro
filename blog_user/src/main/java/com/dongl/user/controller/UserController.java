@@ -3,6 +3,7 @@ import java.util.Map;
 
 import com.dongl.entity.Result;
 import com.dongl.utils.RegexUtils;
+import com.dongl.utils.StrUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -124,17 +125,54 @@ public class UserController {
     }
 
     /**
+     * {"mobile":"13223078468","password":"123456","nickname":"小明","sex":"男"}
      * @Description: 用户注册
      * @Author: YaoGuangXun
      * @Date: 2020/3/18 16:25
      **/
-	@RequestMapping(value = "register/{code}",method = RequestMethod.POST)
+	@RequestMapping(value = "/register/{code}",method = RequestMethod.POST)
 	public Result regist (@RequestBody User user,@PathVariable String code){
         if (StringUtils.isEmpty(code)){
             return Result.error("验证码不能为空！");
         }
+
+        String mobile = user.getMobile();
+        String password = user.getPassword();
+        if (StrUtils.isEmpty(mobile)){
+            return Result.error("手机号码不能为空！");
+        }
+        if (StrUtils.isEmpty(password)){
+            return Result.error("密码不能为空！");
+        }
         Result result =userService.regist(user,code);
         return result;
     }
+    
+    /**
+     * {"mobile":"13223078468","password":"123456"}
+     * @Description: 用户登录
+     * @Author: YaoGuangXun
+     * @Date: 2020/3/19 23:18
+     **/
+	@RequestMapping(value = "/login/{code}",method = RequestMethod.POST)
+	public Result login (@RequestBody Map map,@PathVariable String code){
+	    // 1. 该验证吗可以是短信验证码或 图形验证码
+        if (StringUtils.isEmpty(code)){
+            return Result.error("验证码不能为空！");
+        }
 
+        Object mobile = map.get("mobile");
+        Object password = map.get("password");
+        if (StrUtils.isEmptyObj(password)){
+            return Result.error("密码不能为空！");
+        }
+        if (StrUtils.isEmptyObj(mobile)){
+            return Result.error("手机号码不能为空！");
+        }
+        Result result =userService.login(map,code);
+        return result;
+    }
+
+    
+    
 }

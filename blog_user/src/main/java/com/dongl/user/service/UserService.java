@@ -2,6 +2,7 @@ package com.dongl.user.service;
 
 import com.dongl.entity.Result;
 import com.dongl.rediesutils.RedisUtil;
+import com.dongl.user.config.BCryptUtil;
 import com.dongl.user.dao.UserDao;
 import com.dongl.user.entity.User;
 import com.dongl.user.rabbitmq.SendMsgService;
@@ -37,6 +38,10 @@ public class UserService {
 
     @Autowired
     private RedisUtil redisUtil;
+
+    @Autowired
+    private BCryptUtil bCryptUtil;
+
     @Autowired
     private SendMsgService sendMsgService;
 
@@ -209,12 +214,10 @@ public class UserService {
         return  Result.success("验证码发送成功！");
     }
 
+
     public Result regist(User user, String code) {
         String mobile = user.getMobile();
-        String userId = user.getId();
-        if (StringUtils.isEmpty(mobile)){
-            return Result.error("手机号码不能为空！");
-        }
+        String password = user.getPassword();
         String key = "checkCode"+mobile ;
         // 1. 判断 手机号是否正确
         boolean exists = redisUtil.exists(key);
@@ -222,7 +225,7 @@ public class UserService {
             return Result.error("手机号码不正确！");
         }
         // 2. 判断手机号是否已被注册
-        User userIsExists = userDao.findById(userId).get();
+        User userIsExists = userDao.findByMobile(mobile);
         if (null != userIsExists){
             return Result.error("该手机号已经被注册！");
         }
@@ -237,10 +240,35 @@ public class UserService {
         if (!keep_code.equals(code)){
             return Result.error("验证码不正确!");
         }
-        // 5. 调用数据库保存 用户信息。
+
+        // 5. 密码加密
+        String encoderPassword = bCryptUtil.encoder(password);
+        user.setPassword(encoderPassword);
+        // 6. 调用数据库保存 用户信息。
         /**  注册日期 **/
         user.setRegdate(new Date());
         this.add(user);
         return Result.success("注册成功！");
+    }
+
+    public Result login(Map map, String code) {
+        // 1. 验证验证码是否相等
+
+        // 2.
+        String mobile = String.valueOf(map.get("mobile"));
+        String password = String.valueOf(map.get("password"));
+        User user = userDao.findByMobile(mobile);
+        if (null == user){
+            return Result.error("该用户暂未注册！");
+        }
+        String encoderPassword = user.getPassword();
+        // 3.判断密码是否相等
+        Boolean bool = bCryptUtil.matches(password,encoderPassword);
+        if (!bool){
+            return Result.error("账户或密码不正确！");
+        }
+        // 4. 登陆成功跳转到首页，待实现
+
+        return Result.success("登陆成功！");
     }
 }

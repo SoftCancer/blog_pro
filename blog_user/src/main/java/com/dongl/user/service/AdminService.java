@@ -3,7 +3,7 @@ package com.dongl.user.service;
 import com.dongl.entity.Result;
 import com.dongl.user.dao.AdminDao;
 import com.dongl.user.entity.Admin;
-import com.dongl.user.utils.BCryptUtil;
+import com.dongl.user.config.BCryptUtil;
 import com.dongl.utils.IdWorker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
