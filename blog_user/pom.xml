@@ -36,6 +36,13 @@
             <artifactId>aliyun-java-sdk-core</artifactId>
             <version>4.4.1</version>
         </dependency>
+        <!--  aliyun-java-sdk-dysmsapi 阿里云短信发送依赖包 end-->
+        <!--引入security-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.dongl</groupId>
             <artifactId>blog_common</artifactId>

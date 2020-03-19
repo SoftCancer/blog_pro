@@ -1,4 +1,5 @@
 package com.dongl;
+
 import com.dongl.utils.IdWorker;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
@@ -17,5 +18,5 @@ public class UserApplication {
 	public IdWorker idWorkker(){
 		return new IdWorker(1, 1);
 	}
-	
+
 }
