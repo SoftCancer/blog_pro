@@ -29,3 +29,9 @@ aliyun:
     accessKeySecret: VmyRFbNXt5btNcsr2KsY2SPAAcrftz
     template_code: SMS_186515157
     sign_name: Albert博客
+
+## jwt 认证配置
+jwt:
+  config:
+    key: dongl
+    time: 3600000

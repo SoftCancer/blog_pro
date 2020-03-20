@@ -5,6 +5,7 @@ import com.dongl.user.dao.AdminDao;
 import com.dongl.user.entity.Admin;
 import com.dongl.user.config.BCryptUtil;
 import com.dongl.utils.IdWorker;
+import com.dongl.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,6 +17,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,6 +34,9 @@ public class AdminService {
 
     @Autowired
     private BCryptUtil bCryptUtil;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
 
     @Autowired
@@ -169,10 +174,16 @@ public class AdminService {
         // 3.通过  SpringSecurity 进行密码验证
         Boolean bool = bCryptUtil.matches(password, encodedPassword);
         // 4. 密码正确返回：true
-        if (bool) {
-            return Result.success("登陆成功！", admin);
+        if (!bool) {
+            return Result.error("账户或密码错误！");
         }
 
-        return Result.error("账户或密码错误！");
+        // JWT 认证生成 Token， admin：放入权限，暂未实现
+        String token = jwtUtil.createJWT(admin.getId(),admin.getLoginName(),"admin");
+        Map<String,Object> mapToken = new HashMap<>();
+        mapToken.put("token",token);
+        mapToken.put("admin",admin);
+
+        return Result.success("登陆成功！", mapToken);
     }
 }

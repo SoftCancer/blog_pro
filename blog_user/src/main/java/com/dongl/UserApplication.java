@@ -1,6 +1,7 @@
 package com.dongl;
 
 import com.dongl.utils.IdWorker;
+import com.dongl.utils.JwtUtil;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,5 +19,10 @@ public class UserApplication {
 	public IdWorker idWorkker(){
 		return new IdWorker(1, 1);
 	}
+
+	@Bean
+	public JwtUtil jwtUtil(){
+	    return new JwtUtil();
+    }
 
 }

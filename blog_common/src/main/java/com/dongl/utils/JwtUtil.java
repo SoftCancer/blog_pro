@@ -22,7 +22,7 @@ public class JwtUtil {
     /**
      *  过期时间
      **/
-    private long ttl ;//一个小时
+    private long time ;//一个小时
 
     public String getKey() {
         return key;
@@ -32,12 +32,12 @@ public class JwtUtil {
         this.key = key;
     }
 
-    public long getTtl() {
-        return ttl;
+    public long getTime() {
+        return time;
     }
 
-    public void setTtl(long ttl) {
-        this.ttl = ttl;
+    public void setTime(long time) {
+        this.time = time;
     }
 
     /**
@@ -56,8 +56,9 @@ public class JwtUtil {
                 .setSubject(subject)
                 .setIssuedAt(now)
                 .signWith(SignatureAlgorithm.HS256, key).claim("roles", roles);
-        if (ttl > 0) {
-            builder.setExpiration( new Date( nowMillis + ttl));
+        // 设置失效时间
+        if (time > 0) {
+            builder.setExpiration( new Date( nowMillis + time));
         }
         return builder.compact();
     }
