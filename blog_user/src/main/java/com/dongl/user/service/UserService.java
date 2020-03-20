@@ -7,7 +7,6 @@ import com.dongl.user.dao.UserDao;
 import com.dongl.user.entity.User;
 import com.dongl.user.rabbitmq.SendMsgService;
 import com.dongl.utils.IdWorker;
-import com.dongl.utils.JwtUtil;
 import com.dongl.utils.StrUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
