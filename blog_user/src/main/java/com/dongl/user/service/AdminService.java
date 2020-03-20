@@ -178,7 +178,7 @@ public class AdminService {
             return Result.error("账户或密码错误！");
         }
 
-        // JWT 认证生成 Token， admin：放入权限，暂未实现
+        // JWT 认证生成 Token ; admin：表示暂放入admin权限，动态暂未实现
         String token = jwtUtil.createJWT(admin.getId(),admin.getLoginName(),"admin");
         Map<String,Object> mapToken = new HashMap<>();
         mapToken.put("token",token);
