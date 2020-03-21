@@ -35,3 +35,12 @@ jwt:
   config:
     key: dongl
     time: 3600000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:9000/eureka
+  instance:
+    prefer-ip-address: true
+
+

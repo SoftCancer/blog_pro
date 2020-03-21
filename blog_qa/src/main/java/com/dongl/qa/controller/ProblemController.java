@@ -3,6 +3,7 @@ package com.dongl.qa.controller;
 import com.dongl.entity.PageResult;
 import com.dongl.entity.Result;
 import com.dongl.qa.entity.Problem;
+import com.dongl.qa.feign.BlogBaseFegin;
 import com.dongl.qa.service.ProblemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,6 +23,9 @@ public class ProblemController {
 
 	@Autowired
 	private ProblemService problemService;
+
+	@Autowired
+	private BlogBaseFegin blogBaseFegin;
 
 	/**
 	 * 查询全部数据
@@ -113,6 +117,15 @@ public class ProblemController {
 	public Result getWaitProblem(@PathVariable String labelId,@PathVariable int page,@PathVariable int size){
 	    Page<Problem> problemPage = problemService.getWaitProblem(labelId,page,size);
 	    return Result.success("查询成功",new PageResult<>(problemPage.getTotalElements(),problemPage.getContent()));
+    }
+
+    /**
+     *  fegin 调用
+     **/
+    @RequestMapping(value = "/label/{labelId}", method = RequestMethod.GET)
+    public Result findLabelById(@PathVariable("labelId") String labelId){
+        Result result = blogBaseFegin.findById(labelId);
+        return result;
     }
 
 }
