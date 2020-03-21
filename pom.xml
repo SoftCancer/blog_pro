@@ -19,6 +19,7 @@
         <module>blog_elasticsearch</module>
         <module>blog_rabbitmq</module>
         <module>blog_user</module>
+        <module>blog_eureka</module>
     </modules>
 
     <!-- 初次常见父模块 添加如下start -->
@@ -37,6 +38,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
     </properties>
 
     <!-- 公用包放到父模块中 -->
@@ -66,6 +68,19 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <!-- 锁定SpringCloud 的版本配合SpringBoot的版本 -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <!-- 从spring 的仓库中下载没有发布的依赖，不需要可以不用配置 -->
     <repositories>
