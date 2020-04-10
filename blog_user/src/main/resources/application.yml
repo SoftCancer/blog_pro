@@ -5,7 +5,7 @@ spring:
     name: blog_user #指定服务名
   datasource:  
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://47.94.10.48:3306/tensquare_user?characterEncoding=UTF8
+    url: jdbc:mysql://47.94.***.48:3306/tensquare_user?characterEncoding=UTF8
     username: root
     password: 123456
   jpa: 
@@ -25,9 +25,9 @@ spring:
 
 aliyun:
   sms:
-    accessKeyId: LTAI4Fuxe6jRibrnPBKCQ8VU
-    accessKeySecret: VmyRFbNXt5btNcsr2KsY2SPAAcrftz
-    template_code: SMS_186515157
+    accessKeyId: LTAI4Fu***KCQ8VU
+    accessKeySecret: VmyRFbN***2SPAAcrftz
+    template_code: SMS_1***15157
     sign_name: Albert博客
 
 ## jwt 认证配置
