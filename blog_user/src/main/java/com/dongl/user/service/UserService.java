@@ -7,6 +7,7 @@ import com.dongl.user.dao.UserDao;
 import com.dongl.user.entity.User;
 import com.dongl.user.rabbitmq.SendMsgService;
 import com.dongl.utils.IdWorker;
+import com.dongl.utils.JwtUtil;
 import com.dongl.utils.StrUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,8 @@ public class UserService {
     @Autowired
     private HttpServletRequest request;
 
+    @Autowired
+    private JwtUtil jwtUtil;
     /**
      * 查询全部列表
      *
@@ -273,7 +276,11 @@ public class UserService {
             return Result.error("账户或密码不正确！");
         }
         // 4. 登陆成功跳转到首页，待实现
-
-        return Result.success("登陆成功！");
+        // JWT 认证生成 Token ; admin：表示暂放入admin权限，动态暂未实现
+        String token = jwtUtil.createJWT(user.getId(),user.getMobile(),"user");
+        Map<String,Object> mapToken = new HashMap<>();
+        mapToken.put("token",token);
+        mapToken.put("roles",user);
+        return Result.success("登陆成功！",mapToken);
     }
 }

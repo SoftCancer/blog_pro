@@ -1,0 +1,6 @@
+
+## jwt 认证配置
+#jwt:
+#  config:
+#    key: dongl
+#    time: 3600000

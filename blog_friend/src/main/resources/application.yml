@@ -1,0 +1,28 @@
+server:
+  port: 9010
+
+spring:
+  application:
+  ##  中间只能是横杠，不能使用下划线
+    name: blog-friend
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.94.10.48:3306/tensquare_friend?characterEncoding=utf-8&useSSL=true
+    username: root
+    password: 123456
+  jpa:
+    database: mysql
+    show-sql: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:9000/eureka
+  instance:
+    prefer-ip-address: true
+
+## jwt 认证配置
+jwt:
+  config:
+    key: dongl
+    time: 3600000
