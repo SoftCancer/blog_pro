@@ -53,7 +53,16 @@ public class FriendController {
                     return Result.success("好友添加成功！");
                 }
             }else if ("2".equals(type)){
-
+                int flag = friendService.addNoFriend(userid,friendid);
+                if (flag ==0){
+                    return Result.error("不能重复非好友！");
+                }
+                if (flag == 1){
+                    return Result.success("好友添加成功！");
+                }
+                if (flag == 2){
+                    return Result.error("添加异常");
+                }
             }
         }
         return Result.error("参数异常");
