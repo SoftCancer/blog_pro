@@ -21,6 +21,7 @@
         <module>blog_user</module>
         <module>blog_eureka</module>
         <module>blog_friend</module>
+        <module>blog_manager_zuul</module>
     </modules>
 
     <!-- 初次常见父模块 添加如下start -->
