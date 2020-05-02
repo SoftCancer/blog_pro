@@ -42,3 +42,8 @@ SpringCloud 学习实现 博客项目
 用户的注册，增删查改功能，使用Redis和RabbitMQ实现验证码发送。
 ```
 
+#### 10. blog_config ：配置中心
+```$xslt
+配置中心。用于管理配置。
+```
+
