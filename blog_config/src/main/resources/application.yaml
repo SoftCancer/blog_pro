@@ -11,8 +11,23 @@ spring:
         git:
           uri: https://github.com/SoftCancer/SpringcloudConfig.git
           search-paths: blog
+  rabbitmq:
+    host: 192.168.1.109
+    port: 5672
+    username: root
+    password: 123456
+
+## 配置 BUS
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
 
   ## 启动服务直接访问;http://localhost:12000/blog-base-dev.yml
+
+  ## 通过 post 请求：http://127.0.0.1:12000/actuator/bus-refresh ，可以使远程修改的配置文件立即生效。
+  ## 如果为自定义配置 可以在类上添加注解 @RefreshScope 来实现自定义配置 立即生效。
 
 
 
