@@ -7,7 +7,7 @@ spring:
     name: blog-base
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://47.94.10.48:3306/tensquare_base?characterEncoding=utf-8&useSSL=true
+    url: jdbc:mysql://47.66.10.48:3306/tensquare_base?characterEncoding=utf-8&useSSL=true
     username: root
     password: 123456
   jpa:
